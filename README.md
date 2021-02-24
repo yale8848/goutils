@@ -6,4 +6,4 @@
 - files
 - inject
 - logs
-- str
+- strs
