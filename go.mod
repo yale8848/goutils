@@ -1,4 +1,4 @@
-module goutils
+module github.com/yale8848/goutils
 
 go 1.13
 
