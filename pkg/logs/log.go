@@ -2,10 +2,10 @@ package logs
 
 import (
 	"fmt"
+	"github.com/yale8848/goutils/pkg/files"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 	"gopkg.in/natefinch/lumberjack.v2"
-	"goutils/pkg/files"
 	"io"
 	"os"
 	"path/filepath"
