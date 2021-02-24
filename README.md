@@ -7,3 +7,4 @@
 - inject
 - logs
 - str
+- str2
