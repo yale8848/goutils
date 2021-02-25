@@ -28,7 +28,7 @@ package inject
 import (
 	"bytes"
 	"fmt"
-	"github.com/yale8848/dns-manager/pkg/inject/structtag"
+	"github.com/yale8848/goutils/pkg/inject/structtag"
 
 	"math/rand"
 	"reflect"
