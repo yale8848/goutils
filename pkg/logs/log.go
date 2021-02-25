@@ -188,7 +188,7 @@ func (z *ZapLogger) initOne(level zapcore.Level) *zap.Logger {
 
 	return zap.New(core, caller, development)
 }
-func NewZopLogger(ops ...OptionFunc) Logger {
+func NewZopLogger(ops ...OptionFunc) *ZapLogger {
 
 	op := &option{}
 	for _, v := range ops {
@@ -200,7 +200,11 @@ func NewZopLogger(ops ...OptionFunc) Logger {
 }
 
 //maxSize mini size is 1Mib
-func NewLogger(logDir string, maxSize, maxBackups int) Logger {
+func NewLogger(logDir string, maxSize, maxBackups int) *ZapLogger {
+
+	return NewZopLogger(WithOptionLogFileConfig(logDir, maxSize, maxBackups))
+}
+func NewLoggerInterface(logDir string, maxSize, maxBackups int) Logger {
 
 	return NewZopLogger(WithOptionLogFileConfig(logDir, maxSize, maxBackups))
 }
