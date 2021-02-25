@@ -40,7 +40,7 @@ type option struct {
 }
 type OptionFunc func(op *option)
 
-type zapLogger struct {
+type ZapLogger struct {
 	logDebug *zap.Logger
 	logInfo  *zap.Logger
 	logWarn  *zap.Logger
@@ -48,54 +48,54 @@ type zapLogger struct {
 	ops      *option
 }
 
-func (z *zapLogger) Debugf(format string, a ...interface{}) {
+func (z *ZapLogger) Debugf(format string, a ...interface{}) {
 	z.logDebug.WithOptions(zap.AddCallerSkip(1)).Debug(fmt.Sprintf(format, a...))
 }
 
-func (z *zapLogger) Infof(format string, a ...interface{}) {
+func (z *ZapLogger) Infof(format string, a ...interface{}) {
 	z.logInfo.WithOptions(zap.AddCallerSkip(1)).Info(fmt.Sprintf(format, a...))
 }
 
-func (z *zapLogger) Warnf(format string, a ...interface{}) {
+func (z *ZapLogger) Warnf(format string, a ...interface{}) {
 	z.logWarn.WithOptions(zap.AddCallerSkip(1)).Warn(fmt.Sprintf(format, a...))
 }
 
-func (z *zapLogger) Errorf(format string, a ...interface{}) {
+func (z *ZapLogger) Errorf(format string, a ...interface{}) {
 	z.logError.WithOptions(zap.AddCallerSkip(1)).Error(fmt.Sprintf(format, a...))
 }
 
-func (z *zapLogger) DebugDepth(msg string, dep int) {
+func (z *ZapLogger) DebugDepth(msg string, dep int) {
 	z.logDebug.WithOptions(zap.AddCallerSkip(dep)).Debug(msg)
 }
 
-func (z *zapLogger) InfoDepth(msg string, dep int) {
+func (z *ZapLogger) InfoDepth(msg string, dep int) {
 	z.logInfo.WithOptions(zap.AddCallerSkip(dep)).Info(msg)
 }
 
-func (z *zapLogger) WarnDepth(msg string, dep int) {
+func (z *ZapLogger) WarnDepth(msg string, dep int) {
 	z.logWarn.WithOptions(zap.AddCallerSkip(dep)).Warn(msg)
 }
 
-func (z *zapLogger) ErrorDepth(msg string, dep int) {
+func (z *ZapLogger) ErrorDepth(msg string, dep int) {
 	z.logError.WithOptions(zap.AddCallerSkip(dep)).Error(msg)
 }
 
-func (z *zapLogger) Debug(msg string) {
+func (z *ZapLogger) Debug(msg string) {
 	z.logDebug.WithOptions(zap.AddCallerSkip(1)).Debug(msg)
 }
 
-func (z *zapLogger) Info(msg string) {
+func (z *ZapLogger) Info(msg string) {
 	z.logInfo.WithOptions(zap.AddCallerSkip(1)).Info(msg)
 }
 
-func (z *zapLogger) Warn(msg string) {
+func (z *ZapLogger) Warn(msg string) {
 	z.logWarn.WithOptions(zap.AddCallerSkip(1)).Warn(msg)
 }
 
-func (z *zapLogger) Error(msg string) {
+func (z *ZapLogger) Error(msg string) {
 	z.logError.WithOptions(zap.AddCallerSkip(1)).Error(msg)
 }
-func (z *zapLogger) init() {
+func (z *ZapLogger) init() {
 	z.logDebug = z.initOne(zapcore.DebugLevel)
 	z.logInfo = z.initOne(zapcore.InfoLevel)
 	z.logWarn = z.initOne(zapcore.WarnLevel)
@@ -116,7 +116,7 @@ func WithOptionLogFileConfig(fName string, maxSize, maxBackups int) OptionFunc {
 	}
 
 }
-func (z *zapLogger) initOne(level zapcore.Level) *zap.Logger {
+func (z *ZapLogger) initOne(level zapcore.Level) *zap.Logger {
 
 	var fileWriter io.Writer
 	if z.ops.fileConfig != nil && len(z.ops.fileConfig.Filename) > 0 {
@@ -194,7 +194,7 @@ func NewZopLogger(ops ...OptionFunc) Logger {
 	for _, v := range ops {
 		v(op)
 	}
-	zp := &zapLogger{ops: op}
+	zp := &ZapLogger{ops: op}
 	zp.init()
 	return zp
 }
