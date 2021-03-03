@@ -49,50 +49,98 @@ type ZapLogger struct {
 }
 
 func (z *ZapLogger) Debugf(format string, a ...interface{}) {
+	if z.logDebug==nil {
+        fmt.Println(fmt.Sprintf(format, a...))
+		return
+	}
 	z.logDebug.WithOptions(zap.AddCallerSkip(1)).Debug(fmt.Sprintf(format, a...))
 }
 
 func (z *ZapLogger) Infof(format string, a ...interface{}) {
+	if z.logInfo==nil {
+		fmt.Println(fmt.Sprintf(format, a...))
+		return
+	}
 	z.logInfo.WithOptions(zap.AddCallerSkip(1)).Info(fmt.Sprintf(format, a...))
 }
 
 func (z *ZapLogger) Warnf(format string, a ...interface{}) {
+	if z.logWarn==nil {
+		fmt.Println(fmt.Sprintf(format, a...))
+		return
+	}
 	z.logWarn.WithOptions(zap.AddCallerSkip(1)).Warn(fmt.Sprintf(format, a...))
 }
 
 func (z *ZapLogger) Errorf(format string, a ...interface{}) {
+	if z.logError==nil {
+		fmt.Println(fmt.Sprintf(format, a...))
+		return
+	}
 	z.logError.WithOptions(zap.AddCallerSkip(1)).Error(fmt.Sprintf(format, a...))
 }
 
 func (z *ZapLogger) DebugDepth(msg string, dep int) {
+	if z.logDebug==nil {
+		fmt.Println(msg)
+		return
+	}
 	z.logDebug.WithOptions(zap.AddCallerSkip(dep)).Debug(msg)
 }
 
 func (z *ZapLogger) InfoDepth(msg string, dep int) {
+	if z.logInfo==nil {
+		fmt.Println(msg)
+		return
+	}
 	z.logInfo.WithOptions(zap.AddCallerSkip(dep)).Info(msg)
 }
 
 func (z *ZapLogger) WarnDepth(msg string, dep int) {
+	if z.logWarn==nil {
+		fmt.Println(msg)
+		return
+	}
 	z.logWarn.WithOptions(zap.AddCallerSkip(dep)).Warn(msg)
 }
 
 func (z *ZapLogger) ErrorDepth(msg string, dep int) {
+	if z.logError==nil {
+		fmt.Println(msg)
+		return
+	}
 	z.logError.WithOptions(zap.AddCallerSkip(dep)).Error(msg)
 }
 
 func (z *ZapLogger) Debug(msg string) {
+	if z.logDebug==nil {
+		fmt.Println(msg)
+		return
+	}
 	z.logDebug.WithOptions(zap.AddCallerSkip(1)).Debug(msg)
 }
 
 func (z *ZapLogger) Info(msg string) {
+	if z.logInfo==nil {
+		fmt.Println(msg)
+		return
+	}
 	z.logInfo.WithOptions(zap.AddCallerSkip(1)).Info(msg)
 }
 
 func (z *ZapLogger) Warn(msg string) {
+	if z.logWarn==nil {
+		fmt.Println(msg)
+		return
+	}
 	z.logWarn.WithOptions(zap.AddCallerSkip(1)).Warn(msg)
 }
 
 func (z *ZapLogger) Error(msg string) {
+	if z.logError==nil {
+		fmt.Println(msg)
+		return
+	}
 	z.logError.WithOptions(zap.AddCallerSkip(1)).Error(msg)
 }
 func (z *ZapLogger) init() {
@@ -172,11 +220,16 @@ func (z *ZapLogger) initOne(level zapcore.Level) *zap.Logger {
 		)
 	} else {
 
+		fmt.Println("fileWriter == nil")
+
 		core = zapcore.NewCore(
 			zapcore.NewJSONEncoder(encoderConfig),                   // 编码器配置
 			zapcore.NewMultiWriteSyncer(zapcore.AddSync(os.Stdout)), // 打印到控制台和文件
 			atomicLevel, // 日志级别
 		)
+	}
+	if core==nil {
+		fmt.Println("core == nil")
 	}
 
 	// 开启开发模式，堆栈跟踪
