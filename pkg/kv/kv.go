@@ -7,7 +7,7 @@ import (
 )
 
 type BBoltKv struct {
-	bkv *bbolt.DB
+	BBkv *bbolt.DB
 }
 
 type ViewValueCallBack func(k,v []byte) error
@@ -17,13 +17,13 @@ type ViewValueCallBack func(k,v []byte) error
 //db, err := bolt.Open("my.db", 0600, nil)
 func NewBBolt(path string, mode os.FileMode, options *bbolt.Options) (*BBoltKv, error)  {
 	b,er:= bbolt.Open(path,mode,options)
-	return &BBoltKv{bkv:b},er
+	return &BBoltKv{BBkv:b},er
 }
 
 
 func (bb *BBoltKv)PutWithBkt(bkt string,k,v []byte) error {
 
-	return bb.bkv.Update(func(tx *bbolt.Tx) error {
+	return bb.BBkv.Update(func(tx *bbolt.Tx) error {
 		bk:=tx.Bucket([]byte(bkt))
 		return bk.Put(k,v)
 	})
@@ -31,7 +31,7 @@ func (bb *BBoltKv)PutWithBkt(bkt string,k,v []byte) error {
 
 func (bb *BBoltKv)PutWithBktManyJson(bkt string,mp map[string]interface{}) error {
 
-	return bb.bkv.Update(func(tx *bbolt.Tx) error {
+	return bb.BBkv.Update(func(tx *bbolt.Tx) error {
 		bk:=tx.Bucket([]byte(bkt))
 		for k,v:=range mp{
 			bt,err:=json.Marshal(v)
@@ -64,7 +64,7 @@ func (bb *BBoltKv)PutWithBktByteKeyJson(bkt string,k []byte ,v interface{}) erro
 }
 
 func (bb *BBoltKv)GetByStrKeyValueJson(bkt string,k string,v interface{})  error {
-	return bb.bkv.View(func(tx *bbolt.Tx) error {
+	return bb.BBkv.View(func(tx *bbolt.Tx) error {
 		bk:=tx.Bucket([]byte(bkt))
 		bt:=bk.Get([]byte(k))
 		return json.Unmarshal(bt,v)
@@ -72,7 +72,7 @@ func (bb *BBoltKv)GetByStrKeyValueJson(bkt string,k string,v interface{})  error
 }
 
 func (bb *BBoltKv)GteInter(bkt string,va ViewValueCallBack) error {
-	 return  bb.bkv.View(func(tx *bbolt.Tx) error {
+	 return  bb.BBkv.View(func(tx *bbolt.Tx) error {
 		b := tx.Bucket([]byte(bkt))
 		c := b.Cursor()
 		for k, v := c.First(); k != nil; k, v = c.Next() {
