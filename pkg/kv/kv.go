@@ -95,7 +95,7 @@ func (bb *BBoltKv)GetLast(bkt string,va ViewValueCallBack) error {
 }
 
 func (bb *BBoltKv)CreateBucket(bkt string) error {
-	return  bb.BBkv.View(func(tx *bbolt.Tx) error {
+	return  bb.BBkv.Update(func(tx *bbolt.Tx) error {
 		_,err:=tx.CreateBucketIfNotExists([]byte(bkt))
 		return err
 	})
