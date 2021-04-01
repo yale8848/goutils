@@ -10,7 +10,7 @@ type BBoltKv struct {
 	bkv *bbolt.DB
 }
 
-type ViewValueCallBack func(k,v []byte)
+type ViewValueCallBack func(k,v []byte) error
 
 
 //https://pkg.go.dev/go.etcd.io/bbolt#readme-bbolt
@@ -58,7 +58,10 @@ func (bb *BBoltKv)GteInter(bkt string,va ViewValueCallBack) error {
 		b := tx.Bucket([]byte(bkt))
 		c := b.Cursor()
 		for k, v := c.First(); k != nil; k, v = c.Next() {
-			va(k,v)
+			err:=va(k,v)
+			if err!=nil {
+				return err
+			}
 		}
 		return nil
 	})
@@ -68,7 +71,6 @@ func (bb *BBoltKv)GetLast(bkt string,va ViewValueCallBack) error {
 	return  bb.bkv.View(func(tx *bbolt.Tx) error {
 		b := tx.Bucket([]byte(bkt))
 		c := b.Cursor()
-		va(c.Last())
-		return nil
+		return va(c.Last())
 	})
 }
