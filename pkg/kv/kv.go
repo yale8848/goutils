@@ -29,6 +29,24 @@ func (bb *BBoltKv)PutWithBkt(bkt string,k,v []byte) error {
 	})
 }
 
+func (bb *BBoltKv)PutWithBktManyJson(bkt string,mp map[string]interface{}) error {
+
+	return bb.bkv.Update(func(tx *bbolt.Tx) error {
+		bk:=tx.Bucket([]byte(bkt))
+		for k,v:=range mp{
+			bt,err:=json.Marshal(v)
+			if err!=nil {
+				return err
+			}
+			err=bk.Put([]byte(k),bt)
+			if err!=nil {
+				return err
+			}
+		}
+		return nil
+	})
+}
+
 func (bb *BBoltKv)PutWithBktStrKey(bkt string,k string,v []byte) error {
 	return bb.PutWithBkt(bkt,[]byte(k),v)
 }
