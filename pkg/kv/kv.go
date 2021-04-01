@@ -73,6 +73,7 @@ func (bb *BBoltKv)GetByStrKeyValueJson(bkt string,k string,v interface{})  error
 
 func (bb *BBoltKv)GteInter(bkt string,va ViewValueCallBack) error {
 	 return  bb.BBkv.View(func(tx *bbolt.Tx) error {
+
 		b := tx.Bucket([]byte(bkt))
 		c := b.Cursor()
 		for k, v := c.First(); k != nil; k, v = c.Next() {
@@ -86,9 +87,16 @@ func (bb *BBoltKv)GteInter(bkt string,va ViewValueCallBack) error {
 }
 
 func (bb *BBoltKv)GetLast(bkt string,va ViewValueCallBack) error {
-	return  bb.bkv.View(func(tx *bbolt.Tx) error {
+	return  bb.BBkv.View(func(tx *bbolt.Tx) error {
 		b := tx.Bucket([]byte(bkt))
 		c := b.Cursor()
 		return va(c.Last())
+	})
+}
+
+func (bb *BBoltKv)CreateBucket(bkt string) error {
+	return  bb.BBkv.View(func(tx *bbolt.Tx) error {
+		_,err:=tx.CreateBucketIfNotExists([]byte(bkt))
+		return err
 	})
 }
