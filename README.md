@@ -39,6 +39,11 @@ Some golang utils lib
 
  [Issues here](https://github.com/yale8848/goutils/issues)
 
+
+### Thanks
+
+[![JetBrains](doc/jetbrains.jpg)](https://www.jetbrains.com/?from=YaleRen)
+
 ### License
 
 ```
