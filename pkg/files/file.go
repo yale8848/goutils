@@ -32,7 +32,7 @@ func IsFileExist(fpath string) (bool) {
 	return false
 }
 
-func Copy(srcFile,distFile string) (err error) {
+func Copy(srcFile,distFile string,isDeleteSrc bool) (err error) {
 	fs,err:=os.Open(srcFile)
 	if err!=nil {
 		return
@@ -42,5 +42,8 @@ func Copy(srcFile,distFile string) (err error) {
 		return
 	}
 	_,err=io.Copy(fd,fs)
+	if err==nil&&isDeleteSrc {
+		return os.Remove(srcFile)
+	}
 	return
 }
