@@ -37,11 +37,16 @@ func Copy(srcFile,distFile string,isDeleteSrc bool) (err error) {
 	if err!=nil {
 		return
 	}
+
 	fd,err:=os.Create(distFile)
 	if err!=nil {
 		return
 	}
 	_,err=io.Copy(fd,fs)
+
+	fs.Close()
+	fd.Close()
+
 	if err==nil&&isDeleteSrc {
 		return os.Remove(srcFile)
 	}
