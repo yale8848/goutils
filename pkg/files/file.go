@@ -6,9 +6,9 @@ import (
 	"path/filepath"
 )
 
-func MkDirs(fp string) {
+func MkDirs(fp string) error {
 	fd := filepath.Base(fp)
-	os.MkdirAll(fd, 0666)
+	return os.MkdirAll(fd, 0666)
 }
 
 func IsExist(fpath string) (bool,error) {
