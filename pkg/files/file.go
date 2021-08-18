@@ -1,14 +1,33 @@
 package files
 
 import (
+	"github.com/pkg/errors"
 	"io"
 	"os"
 	"path/filepath"
+	"strings"
 )
 
+
 func MkDirs(fp string) error {
-	fd := filepath.Base(fp)
-	return os.MkdirAll(fd, 0666)
+	dirPath:=filepath.Base(fp)
+	return os.MkdirAll(dirPath, 0666)
+}
+func MkDirsWithoutFile(fp string) error {
+	dirPath:=""
+	dir,fl:=filepath.Split(fp)
+	if strings.Contains(fl,".") {
+		dirPath=dir
+	}else{
+		dirPath=fp
+	}
+	if len(dirPath)==0 {
+		return errors.New("dir empty")
+	}
+	return os.MkdirAll(dirPath, 0666)
+}
+func MustMkDirs(fp string) error {
+	return os.MkdirAll(fp, 0666)
 }
 
 func IsExist(fpath string) (bool,error) {
