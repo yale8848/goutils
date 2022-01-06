@@ -36,6 +36,7 @@ Some golang utils lib
   - IsEmpty
   - IsHaveEmpty
   - IsAllEmpty
+  - SubStr
 
 ### Issues
 
