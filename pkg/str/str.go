@@ -2,6 +2,9 @@ package str
 
 import "strings"
 
+func ToPtr( s string) *string  {
+	return &s
+}
 func IsEmpty(s string) bool {
 
 	return len(strings.TrimSpace(s)) == 0
