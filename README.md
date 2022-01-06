@@ -35,6 +35,7 @@ Some golang utils lib
 - str
   - IsEmpty
   - IsHaveEmpty
+  - IsAllEmpty
 
 ### Issues
 
