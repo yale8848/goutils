@@ -9,3 +9,10 @@ func ToJsonStr(data map[string]interface{}) string {
 	}
 	return string(jsonData)
 }
+func Struct2Json(data interface{}) (string, error) {
+	jsonData, err := json.Marshal(data)
+	if err != nil {
+		return "", err
+	}
+	return string(jsonData), err
+}
