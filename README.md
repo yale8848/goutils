@@ -37,6 +37,10 @@ Some golang utils lib
   - IsHaveEmpty
   - IsAllEmpty
   - SubStr
+- json
+  - ToJsonStr
+  - Struct2Json
+  - StringToJson
 
 ### Issues
 

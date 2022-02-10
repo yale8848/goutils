@@ -16,3 +16,11 @@ func Struct2Json(data interface{}) (string, error) {
 	}
 	return string(jsonData), err
 }
+
+func StringToJson(data string) map[string]interface{} {
+	var jsonData map[string]interface{}
+	json.Unmarshal([]byte(data), &jsonData)
+	return jsonData
+}
+
+
