@@ -38,6 +38,7 @@ Some golang utils lib
   - IsAllEmpty
   - SubStr
   - Reverse
+  - BytesToString
   
 - json
   - ToJsonStr

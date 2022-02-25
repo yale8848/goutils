@@ -1,6 +1,9 @@
 package str
 
-import "strings"
+import (
+	"strings"
+	"unsafe"
+)
 
 func ToPtr( s string) *string  {
 	return &s
@@ -44,4 +47,8 @@ func Reverse(s string) string {
 		r[i], r[j] = r[j], r[i]
 	}
 	return string(r)
+}
+
+func BytesToString(data []byte) string{
+	return *(*string)(unsafe.Pointer(&data))
 }
