@@ -39,6 +39,7 @@ Some golang utils lib
   - SubStr
   - Reverse
   - BytesToString
+  - StringToBytes
   
 - json
   - ToJsonStr
