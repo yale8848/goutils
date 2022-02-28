@@ -57,7 +57,7 @@ func StringToBytes(data string) []byte {
 	return *(*[]byte)(unsafe.Pointer(&data))
 }
 
-func IsContainCN(str string) bool {
+func IsChinese(str string) bool {
 	var hzRegexp = regexp.MustCompile("[\u4e00-\u9fa5]+")
 	return hzRegexp.MatchString(str)
 }

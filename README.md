@@ -40,7 +40,7 @@ Some golang utils lib
   - Reverse
   - BytesToString
   - StringToBytes
-  - IsContainCN
+  - IsChinese
   
 - json
   - ToJsonStr
