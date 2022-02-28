@@ -1,6 +1,7 @@
 package str
 
 import (
+	"regexp"
 	"strings"
 	"unsafe"
 )
@@ -54,4 +55,9 @@ func BytesToString(data []byte) string{
 }
 func StringToBytes(data string) []byte {
 	return *(*[]byte)(unsafe.Pointer(&data))
+}
+
+func IsContainCN(str string) bool {
+	var hzRegexp = regexp.MustCompile("[\u4e00-\u9fa5]+")
+	return hzRegexp.MatchString(str)
 }
