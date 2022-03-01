@@ -49,6 +49,8 @@ Some golang utils lib
 - aes
   - AesEncrypt
   - AesDecrypt
+- random
+  - GetRandomNumString
 
 ### Issues
 
