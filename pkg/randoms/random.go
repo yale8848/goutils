@@ -26,7 +26,10 @@ func GetRandomNumString(num int, str ...string) string {
 	}
 	return buf.String()
 }
-
+func GetRandomChars(num int) string {
+	ss := "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	return GetRandomNumString(num, ss)
+}
 func getRandSeek() int64 {
 	l.Lock()
 	if randSeek >= 100000000 {

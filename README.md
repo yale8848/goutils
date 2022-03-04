@@ -51,6 +51,7 @@ Some golang utils lib
   - AesDecrypt
 - random
   - GetRandomNumString
+  - GetRandomChars
 
 ### Issues
 
