@@ -52,6 +52,7 @@ Some golang utils lib
 - random
   - GetRandomNumString
   - GetRandomChars
+  - GetRandomNumAndChars
 
 ### Issues
 

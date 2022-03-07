@@ -30,6 +30,10 @@ func GetRandomChars(num int) string {
 	ss := "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 	return GetRandomNumString(num, ss)
 }
+func GetRandomNumAndChars(num int) string {
+	ss := "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	return GetRandomNumString(num, ss)
+}
 func getRandSeek() int64 {
 	l.Lock()
 	if randSeek >= 100000000 {
