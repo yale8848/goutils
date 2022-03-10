@@ -42,6 +42,7 @@ Some golang utils lib
   - StringToBytes
   - IsChinese
   - StrToInt64
+  - IsSmallChars
   
 - json
   - ToJsonStr

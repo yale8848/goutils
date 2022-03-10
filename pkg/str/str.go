@@ -63,6 +63,10 @@ func IsChinese(str string) bool {
 	return hzRegexp.MatchString(str)
 }
 
+func IsSmallChars(str string) bool {
+	var hzRegexp = regexp.MustCompile("[a-z]+")
+	return hzRegexp.MatchString(str)
+}
 func StrToInt64(str string, def int64) int64 {
 	result, err := strconv.ParseInt(str, 10, 64)
 	if err != nil {
