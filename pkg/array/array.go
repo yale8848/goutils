@@ -24,3 +24,10 @@ func IntInArray(num int, data []int) bool {
 	return false
 }
 
+
+func MergeArray(dest []interface{}, src []interface{}) (result []interface{}) {
+	result = make([]interface{}, len(dest)+len(src))
+	copy(result, dest)
+	copy(result[len(dest):], src)
+	return
+}

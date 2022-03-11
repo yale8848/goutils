@@ -4,6 +4,9 @@ Some golang utils lib
 
 ### include some utils below
 
+- array
+  - MergeArray
+
 - errs
   - Fatal
   - Panic
