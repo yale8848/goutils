@@ -1,6 +1,5 @@
 package array
 
-
 func StrInArray(str string, data []string) bool {
 	if len(data) > 0 {
 		for _, row := range data {
@@ -11,7 +10,6 @@ func StrInArray(str string, data []string) bool {
 	}
 	return false
 }
-
 
 func IntInArray(num int, data []int) bool {
 	if len(data) > 0 {
@@ -24,10 +22,13 @@ func IntInArray(num int, data []int) bool {
 	return false
 }
 
-
 func MergeArray(dest []interface{}, src []interface{}) (result []interface{}) {
 	result = make([]interface{}, len(dest)+len(src))
 	copy(result, dest)
 	copy(result[len(dest):], src)
+	return
+}
+func DeleteArray(src []interface{}, index int) (result []interface{}) {
+	result = append(src[:index], src[(index+1):]...)
 	return
 }

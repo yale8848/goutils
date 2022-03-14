@@ -6,6 +6,7 @@ Some golang utils lib
 
 - array
   - MergeArray
+  - DeleteArray
 
 - errs
   - Fatal
