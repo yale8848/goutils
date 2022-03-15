@@ -32,3 +32,16 @@ func DeleteArray(src []interface{}, index int) (result []interface{}) {
 	result = append(src[:index], src[(index+1):]...)
 	return
 }
+func ArrayStr2Int(data []string) []int {
+	var (
+		arr = make([]int, 0, len(data))
+	)
+	if len(data) == 0 {
+		return arr
+	}
+	for i, _ := range data {
+		var num, _ = strconv.Atoi(data[i])
+		arr = append(arr, num)
+	}
+	return arr
+}
