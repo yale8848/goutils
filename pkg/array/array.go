@@ -45,3 +45,16 @@ func ArrayStr2Int(data []string) []int {
 	}
 	return arr
 }
+
+func ArrayInt2Str(data []int) []string {
+	var (
+		arr = make([]string, 0, len(data))
+	)
+	if len(data) == 0 {
+		return arr
+	}
+	for i, _ := range data {
+		arr = append(arr, strconv.Itoa(data[i]))
+	}
+	return arr
+}

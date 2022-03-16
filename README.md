@@ -8,6 +8,7 @@ Some golang utils lib
   - MergeArray
   - DeleteArray
   - ArrayStr2Int
+  - ArrayInt2Str
 
 - errs
   - Fatal
