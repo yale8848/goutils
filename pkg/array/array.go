@@ -1,5 +1,10 @@
 package array
 
+import (
+	"strconv"
+	"strings"
+)
+
 func StrInArray(str string, data []string) bool {
 	if len(data) > 0 {
 		for _, row := range data {
@@ -57,4 +62,15 @@ func ArrayInt2Str(data []int) []string {
 		arr = append(arr, strconv.Itoa(data[i]))
 	}
 	return arr
+}
+
+func TrimSpaceStrInArray(str string, data []string) bool {
+	if len(data) > 0 {
+		for _, row := range data {
+			if str == strings.TrimSpace(row) {
+				return true
+			}
+		}
+	}
+	return false
 }

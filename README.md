@@ -9,6 +9,7 @@ Some golang utils lib
   - DeleteArray
   - ArrayStr2Int
   - ArrayInt2Str
+  - TrimSpaceStrInArray
 
 - errs
   - Fatal
