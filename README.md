@@ -55,6 +55,8 @@ Some golang utils lib
   - ToJsonStr
   - Struct2Json
   - StringToJson
+  - ToIntList
+
 - aes
   - AesEncrypt
   - AesDecrypt

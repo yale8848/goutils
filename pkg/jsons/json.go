@@ -22,5 +22,11 @@ func StringToJson(data string) map[string]interface{} {
 	json.Unmarshal([]byte(data), &jsonData)
 	return jsonData
 }
+func ToIntList(data string) []int {
+	var tmp = make([]int, 0)
+	json.Unmarshal([]byte(data), &tmp)
+	return tmp
+}
+
 
 
