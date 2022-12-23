@@ -1,5 +1,9 @@
 package combine
 
+import "strings"
+
+var defSep = "_"
+
 func CartCombine(data [][]string, sep string) []string {
 	var _sep = defSep
 	if sep != "" {
