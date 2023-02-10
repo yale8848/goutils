@@ -6,12 +6,26 @@ import (
 	"sync"
 	"time"
 )
+
 var (
 	randSeek = int64(1)
 	l        sync.Mutex
 )
 
-
+func GetRandomNumStringOne(num int, str string) string {
+	s := "0123456789"
+	if len(str) > 0 {
+		s = str
+	}
+	l := len(s)
+	r := rand.New(rand.NewSource(getRandSeek()))
+	var buf bytes.Buffer
+	for i := 0; i < num; i++ {
+		x := r.Intn(l)
+		buf.WriteString(s[x : x+1])
+	}
+	return buf.String()
+}
 func GetRandomNumString(num int, str ...string) string {
 	s := "0123456789"
 	if len(str) > 0 {
@@ -43,4 +57,3 @@ func getRandSeek() int64 {
 	l.Unlock()
 	return time.Now().UnixNano() + randSeek
 }
-
