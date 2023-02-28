@@ -16,3 +16,11 @@ func IsIdCard(cardNo string) bool {
 	}
 	return true
 }
+
+func IsMail(mail string) bool {
+	
+	if m, _ := regexp.MatchString(`^[a-z0-9A-Z]+[- | a-z0-9A-Z . _]+@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-z]{2,}$`, mail); !m {
+		return false
+	}
+	return true
+}
