@@ -10,7 +10,12 @@ Some golang utils lib
   - ArrayStr2Int
   - ArrayInt2Str
   - TrimSpaceStrInArray
+  - StrInArray
+  - IntInArray
 
+- camelcase
+  - CamelCase
+  
 - errs
   - Fatal
   - Panic

@@ -101,6 +101,9 @@ func (k *Apk) Label(resConfig *ResTableConfig) (s string, err error) {
 func (k *Apk) Manifest() Manifest {
 	return k.manifest
 }
+func (k *Apk) VersionName() string {
+	return k.manifest.VersionName
+}
 
 // PackageName returns the package name of the APK.
 func (k *Apk) PackageName() string {
