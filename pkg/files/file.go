@@ -3,6 +3,7 @@ package files
 import (
 	"github.com/pkg/errors"
 	"io"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -82,4 +83,25 @@ func PathExists(path string) bool {
 		return false
 	}
 	return false
+}
+
+// 获取当前目录下所有文件
+func GetFileList(path string) []string {
+	var fileList []string
+	files, _ := ioutil.ReadDir(path)
+	for _, f := range files {
+		if !f.IsDir() {
+			fileList = append(fileList, f.Name())
+		}
+	}
+	return fileList
+}
+
+// 判断所给路径文件/文件夹是否存在
+func filexists(path string) bool {
+	_, err := os.Stat(path) //os.Stat获取文件信息
+	if err != nil {
+		return os.IsExist(err)
+	}
+	return true
 }
