@@ -10,6 +10,10 @@ import (
 func ToPtr(s string) *string {
 	return &s
 }
+func IsNotEmpty(s string) bool {
+
+	return len(strings.TrimSpace(s)) != 0
+}
 func IsEmpty(s string) bool {
 
 	return len(strings.TrimSpace(s)) == 0
