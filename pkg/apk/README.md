@@ -1,4 +1,4 @@
-androidbinary
+android apk parser
 =====
 
 [![Build Status](https://travis-ci.org/shogo82148/androidbinary.svg?branch=master)](https://travis-ci.org/shogo82148/androidbinary)
