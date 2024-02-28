@@ -38,6 +38,9 @@ func CamelCase(s string) string {
 func isASCIIUpper(c byte) bool {
 	return 'A' <= c && c <= 'Z'
 }
+func isASCIIUpper2(c byte) bool {
+	return 'A' <= c && c <= 'Z'
+}
 
 func isASCIIDigit(c byte) bool {
 	return '0' <= c && c <= '9'
