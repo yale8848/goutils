@@ -26,6 +26,14 @@ func Check(e error) bool {
 	}
 	return false
 }
+
+func IsErr(e error) bool {
+	if e != nil {
+		log.Println(e.Error())
+		return true
+	}
+	return false
+}
 type CallMessage func(message string)
 
 func Recover( callMessage CallMessage){
